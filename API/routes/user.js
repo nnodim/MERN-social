@@ -6,5 +6,6 @@ router.put('/:id', userController.updateUser);
 router.put('/:id/follow/', userController.followUser);
 router.put('/:id/unfollow/', userController.unfollowUser);
 router.delete('/:id', userController.deleteUser);
+router.get('/friends/:id', userController.getFriends);
 
 module.exports = router

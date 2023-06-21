@@ -73,6 +73,25 @@ const followUser = async (req, res) => {
         res.status(403).json("You can't follow yourself");
     }
 }
+const getFriends = async (req, res) => {
+    const id = req.params.id;
+    try {
+        const user = await User.findById(id);
+        const friends = await Promise.all(
+            user.following.map((friendId) => {
+                return User.findById(friendId);
+            })
+        );
+        let friendsData = [];
+        friends.map((friend) => {
+            const { _id, username, profilePicture } = friend;
+            friendsData.push({ _id, username, profilePicture });
+        })
+        res.status(200).json(friendsData);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+}
 
 const unfollowUser = async (req, res) => {
     const { id } = req.params;
@@ -101,5 +120,6 @@ module.exports = {
     deleteUser,
     getUser,
     followUser,
-    unfollowUser
+    unfollowUser,
+    getFriends
 }

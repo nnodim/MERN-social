@@ -1,0 +1,32 @@
+.conversations {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.conversationsWrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+}
+
+.conversationsWrapper:hover {
+    background-color: white;
+    border-radius: 10px;
+}
+
+.conversationsImg {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.conversationsName {
+    font-size: 17px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
